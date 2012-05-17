@@ -1,2 +1,1 @@
-helpers.less
-============
+A collection of commonly used CSS rules wrapped by LESS mixings in order to facilitate the addition of vendor prefixes.
