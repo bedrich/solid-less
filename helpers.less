@@ -1,0 +1,148 @@
+
+/* Environment
+==================== */
+
+@imgPath: '/img';
+
+
+/* Mixins
+==================== */
+
+.backfaceVisibility (@type) {
+	-moz-backface-visibility: @type;
+	-webkit-backface-visibility: @type;
+	backface-visibility: @type;
+}
+
+.backgroundGradient (@side, @start, @stop) {
+	background: linear-gradient(@side, @start, @stop);
+	background: -webkit-linear-gradient(@side, @start, @stop);
+	background: -moz-linear-gradient(@side, @start, @stop);
+}
+
+.borderRadius (@tl, @tr, @br, @bl) {
+	-moz-border-top-left-radius: @tl;
+	-moz-border-top-right-radius: @tr;
+	-moz-border-bottom-left-radius: @bl;
+	-moz-border-bottom-right-radius: @br;
+	-webkit-border-top-left-radius: @tl;
+	-webkit-border-top-right-radius: @tr;
+	-webkit-border-bottom-left-radius: @bl;
+	-webkit-border-bottom-right-radius: @br;
+	border-top-left-radius: @tl;
+	border-top-right-radius: @tr;
+	border-bottom-left-radius: @bl;
+	border-bottom-right-radius: @br;
+}
+
+.borderRadiusAll (@r) {
+	-moz-border-radius: @r;
+	-webkit-border-radius: @r;
+	border-radius: @r;
+}
+
+.boxSizing (@val) {
+	-moz-box-sizing: @val;
+	-webkit-box-sizing: @val;
+	box-sizing: @val;
+}
+
+.boxShadow (@x, @y, @blur, @spread, @color) {
+	-moz-box-shadow: @x @y @blur @spread @color;
+	-webkit-box-shadow: @x @y @blur @spread @color;
+	box-shadow: @x @y @blur @spread @color;
+}
+
+.boxShadowInset (@x, @y, @blur, @spread, @color) {
+	-moz-box-shadow: inset @x @y @blur @spread @color;
+	-webkit-box-shadow: inset @x @y @blur @spread @color;
+	box-shadow: inset @x @y @blur @spread @color;
+}
+
+.boxShadowRemove {
+	-moz-box-shadow: 0 0 0 0 transparent;
+	-webkit-box-shadow: 0 0 0 0 transparent;
+	box-shadow: 0 0 0 0 transparent;
+}
+
+.clearfix {
+	display: block;
+	zoom: 1;
+
+	&:after {
+		clear: both;
+		content: ".";
+		display: block;
+		height: 0;
+		visibility: hidden;
+	}
+}
+
+.emptyBlock {
+	display: block;
+	content: '';
+	height: 0;
+	width: 0;
+}
+
+.imgBlock (@w, @h, @img, @x: 0, @y: 0) {
+	background: url('@{imgPath}/@{img}') @x @y no-repeat transparent;
+	display: block;
+	height: @h;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	width: @w;
+}
+
+.opacity (@alpha) {
+	-moz-opacity: @alpha;
+	filter: alpha(opacity=@alpha);
+	opacity: @alpha;
+}
+
+.perspective (@val) {
+	-moz-perspective: @val;
+	-webkit-perspective: @val;
+	perspective: @val;
+}
+
+.textOverflow (@type: ellipsis) {
+	display: block;
+	overflow: hidden;
+	text-overflow: @type;
+	white-space: nowrap;
+}
+
+.transition (@property, @dur, @timing) {
+	-webkit-transition-property: @property;
+	-webkit-transition-duration: @dur;
+	-webkit-transition-timing-function: @timing;
+	-moz-transition-property: @property;
+	-moz-transition-duration: @dur;
+	-moz-transition-timing-function: @timing;
+	-o-transition-property: @property;
+	-o-transition-duration: @dur;
+	-o-transition-timing-function: @timing;
+	transition-property: @property;
+	transition-duration: @dur;
+	transition-timing-function: @timing;
+}
+
+.transform (@func) {
+	-moz-transform: @func;
+	-webkit-transform: @func;
+	transform: @func;
+}
+
+.transformOrigin (@origin) {
+	-moz-transform-origin: @origin;
+	-webkit-transform-origin: @origin;
+	transform-origin: @origin;
+}
+
+.transformStyle (@style) {
+	-moz-transform-style: @style;
+	-webkit-transform-style: @style;
+	transform-style: @style;
+}
