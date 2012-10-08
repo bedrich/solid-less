@@ -3,10 +3,21 @@
 ==================== */
 
 @imgPath: '/img';
-
+@spriteImg: @imgPath + '/solidsprite.png';
+@spriteGrid: 30;
 
 /* Mixins
 ==================== */
+
+.sprite-block (@pos, @w, @h, @display: block) {
+	background: url('@{spriteImg}') 0 -(@pos * @spriteGrid)  no-repeat transparent;
+	display: @display;
+	height: @h;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	width: @w;
+}
 
 .backfaceVisibility (@type) {
 	-moz-backface-visibility: @type;
