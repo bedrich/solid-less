@@ -41,10 +41,12 @@
 	backface-visibility: @type;
 }
 
-.backgroundGradient (@side, @start, @stop) {
-	background: linear-gradient(@side, @start, @stop);
-	background: -webkit-linear-gradient(@side, @start, @stop);
-	background: -moz-linear-gradient(@side, @start, @stop);
+.linear-gradient (@side: top, @start: #fff, @stop: #000) {
+	background: -webkit-linear-gradient(@arguments);
+	background: -moz-linear-gradient(@arguments);
+	background: -ms-linear-gradient(@arguments);
+	background: -o-linear-gradient(@arguments);
+	background: linear-gradient(@arguments);
 }
 
 .borderRadius (@tl, @tr, @br, @bl) {
