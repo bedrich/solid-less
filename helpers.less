@@ -1,16 +1,16 @@
 
-/* Environment
-==================== */
+// settings
+// ------------------------------
 
-@imgPath: '/img';
-@spriteImg: @imgPath + '/solidsprite.png';
-@spriteGrid: 30;
+@img_path: '/img';
+@sprite: @img_path + '/solidsprite.png';
+@sprite_grid: 30;
 
-/* Mixins
-==================== */
+// utilities
+// ------------------------------
 
 .sprite-block (@pos, @w, @h, @display: block) {
-	background: url('@{spriteImg}') 0 -(@pos * @spriteGrid)  no-repeat transparent;
+	background: url('@{sprite}') 0 -(@pos * @sprite_grid)  no-repeat transparent;
 	display: @display;
 	height: @h;
 	text-indent: 100%;
@@ -18,6 +18,22 @@
 	overflow: hidden;
 	width: @w;
 }
+
+.clearfix {
+	display: block;
+	zoom: 1;
+
+	&:after {
+		clear: both;
+		content: ".";
+		display: block;
+		height: 0;
+		visibility: hidden;
+	}
+}
+
+// CSS3
+// ------------------------------
 
 .backfaceVisibility (@type) {
 	-moz-backface-visibility: @type;
@@ -76,19 +92,6 @@
 	box-shadow: 0 0 0 0 transparent;
 }
 
-.clearfix {
-	display: block;
-	zoom: 1;
-
-	&:after {
-		clear: both;
-		content: ".";
-		display: block;
-		height: 0;
-		visibility: hidden;
-	}
-}
-
 .emptyBlock {
 	display: block;
 	content: '';
@@ -97,7 +100,7 @@
 }
 
 .imgBlock (@w, @h, @img, @x: 0, @y: 0) {
-	background: url('@{imgPath}/@{img}') @x @y no-repeat transparent;
+	background: url('@{img_path}/@{img}') @x @y no-repeat transparent;
 	display: block;
 	height: @h;
 	text-indent: 100%;
