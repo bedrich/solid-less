@@ -3,14 +3,14 @@
 // ------------------------------
 
 @img_path: '/img';
-@sprite: @img_path + '/solidsprite.png';
+@sprite: "@{img_path}/solidsprite.png";
 @sprite_grid: 30px;
 
 // utilities
 // ------------------------------
 
 .sprite (@pos, @w, @h, @display: block) {
-	background: url('@{sprite}') 0 -(@pos * @sprite_grid)  no-repeat transparent;
+	background: url("@{sprite}") 0 -(@pos * @sprite_grid)  no-repeat transparent;
 	display: @display;
 	height: @h * 1px;
 	text-indent: 100%;
@@ -41,12 +41,20 @@
 	backface-visibility: @type;
 }
 
-.linear-gradient (@side: top, @start: #fff, @stop: #000) {
+.linear-gradient (@gradient: top~"," #fff~"," #000) {
 	background: -webkit-linear-gradient(@arguments);
 	background: -moz-linear-gradient(@arguments);
 	background: -ms-linear-gradient(@arguments);
 	background: -o-linear-gradient(@arguments);
 	background: linear-gradient(@arguments);
+}
+
+.radial-gradient (@gradient: center~"," ellipse~"," #fff~"," #000) {
+	background: -webkit-radial-gradient(@arguments);
+	background: -moz-radial-gradient(@arguments);
+	background: -ms-radial-gradient(@arguments);
+	background: -o-radial-gradient(@arguments);
+	background: radial-gradient(@arguments);
 }
 
 .borderRadius (@tl, @tr, @br, @bl) {
