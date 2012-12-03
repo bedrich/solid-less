@@ -57,25 +57,10 @@
 	background: radial-gradient(@arguments);
 }
 
-.borderRadius (@tl, @tr, @br, @bl) {
-	-moz-border-top-left-radius: @tl;
-	-moz-border-top-right-radius: @tr;
-	-moz-border-bottom-left-radius: @bl;
-	-moz-border-bottom-right-radius: @br;
-	-webkit-border-top-left-radius: @tl;
-	-webkit-border-top-right-radius: @tr;
-	-webkit-border-bottom-left-radius: @bl;
-	-webkit-border-bottom-right-radius: @br;
-	border-top-left-radius: @tl;
-	border-top-right-radius: @tr;
-	border-bottom-left-radius: @bl;
-	border-bottom-right-radius: @br;
-}
-
-.borderRadiusAll (@r) {
-	-moz-border-radius: @r;
-	-webkit-border-radius: @r;
-	border-radius: @r;
+.border-radius (@tl, @tr, @br, @bl) {
+	-moz-border-radius: @arguments;
+	-webkit-border-radius: @arguments;
+	border-radius: @arguments;
 }
 
 .boxSizing (@val) {
