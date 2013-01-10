@@ -49,6 +49,10 @@
 	background: linear-gradient(@arguments);
 }
 
+.ms-linear-gradient (@start, @end, @gradient: 0) {
+	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start}', endColorstr='@{end}',GradientType='@{gradient}' )"; // IE6-8
+}
+
 .radial-gradient (@gradient: center~"," ellipse~"," #fff~"," #000) {
 	background: -webkit-radial-gradient(@arguments);
 	background: -moz-radial-gradient(@arguments);
