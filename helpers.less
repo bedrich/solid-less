@@ -1,14 +1,17 @@
 
-// settings
-// ------------------------------
-
 @img_path: '/img';
 @sprite: "@{img_path}/solidsprite.png";
 @sprite_grid: 30px;
 
-// utilities
-// ------------------------------
 
+// Replaces element's content with a given section of sprite
+//
+// @pos 	- Icon's position on sprite
+// @w 		- Icon's width
+// @h 		- Icon's height
+// @display - CSS `display` value, defaults to `block`
+//
+// Compatibility untested
 .sprite (@pos, @w, @h, @display: block) {
 	background: url("@{sprite}") 0 -(@pos * @sprite_grid)  no-repeat transparent;
 	display: @display;
@@ -19,6 +22,9 @@
 	width: @w * 1px;
 }
 
+// Forces layout for parent of floated elements
+//
+// Compatibility untested
 .clearfix {
 	display: block;
 	zoom: 1;
@@ -32,15 +38,22 @@
 	}
 }
 
-// CSS3
-// ------------------------------
-
+// https://developer.mozilla.org/en-US/docs/CSS/backface-visibility
+//
+// @type - `visible` or `hidden`
+//
+// Compatibility untested
 .backfaceVisibility (@type) {
 	-moz-backface-visibility: @type;
 	-webkit-backface-visibility: @type;
 	backface-visibility: @type;
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/linear-gradient
+//
+// @gradient - values for image to be created
+//
+// Compatibility untested
 .linear-gradient (@gradient: top~"," #fff~"," #000) {
 	background: -webkit-linear-gradient(@arguments);
 	background: -moz-linear-gradient(@arguments);
@@ -49,10 +62,22 @@
 	background: linear-gradient(@arguments);
 }
 
+// Creates a linear gradient for IE6-8
+//
+// @start 		- Starting color
+// @end			- Ending color
+// @gradient	- 0 = vertical gradient, 1 = horizontal gradient
+//
+// Compatibility IE6-8
 .ms-linear-gradient (@start, @end, @gradient: 0) {
-	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start}', endColorstr='@{end}',GradientType='@{gradient}' )"; // IE6-8
+	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start}', endColorstr='@{end}',GradientType='@{gradient}' )";
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/radial-gradient
+//
+// @gradient - values for image to be created
+//
+// Compatibility untested
 .radial-gradient (@gradient: center~"," ellipse~"," #fff~"," #000) {
 	background: -webkit-radial-gradient(@arguments);
 	background: -moz-radial-gradient(@arguments);
@@ -61,36 +86,70 @@
 	background: radial-gradient(@arguments);
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/border-radius
+//
+// @radius - Radii
+//
+// Compatibility untested
 .border-radius (@radius: 0) {
 	-moz-border-radius: @arguments;
 	-webkit-border-radius: @arguments;
 	border-radius: @arguments;
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/box-sizing
+//
+// @val - content-box, padding-box, or border-box
+//
+// Compatibility untested
 .boxSizing (@val) {
 	-moz-box-sizing: @val;
 	-webkit-box-sizing: @val;
 	box-sizing: @val;
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/box-shadow
+//
+// @x 		- horizontal offset
+// @y 		- vertical offset
+// @blur 	- shadow's blur
+// @spread	- shadow's spread
+// @color 	- shadow's color
+//
+// Compatibility untested
 .boxShadow (@x, @y, @blur, @spread, @color) {
 	-moz-box-shadow: @x @y @blur @spread @color;
 	-webkit-box-shadow: @x @y @blur @spread @color;
 	box-shadow: @x @y @blur @spread @color;
 }
 
+// .boxShadow alternative, applies shadow inside the element
+//
+// @x 		- horizontal offset
+// @y 		- vertical offset
+// @blur 	- shadow's blur
+// @spread	- shadow's spread
+// @color 	- shadow's color
+//
+// Compatibility untested
 .boxShadowInset (@x, @y, @blur, @spread, @color) {
 	-moz-box-shadow: inset @x @y @blur @spread @color;
 	-webkit-box-shadow: inset @x @y @blur @spread @color;
 	box-shadow: inset @x @y @blur @spread @color;
 }
 
+// Resets box shadow to its default state, that is, as if it was never applied
+//
+// Compatibility untested
 .boxShadowRemove {
 	-moz-box-shadow: 0 0 0 0 transparent;
 	-webkit-box-shadow: 0 0 0 0 transparent;
 	box-shadow: 0 0 0 0 transparent;
 }
 
+// Styles element as though it was empty
+//
+// Compatibility untested
 .emptyBlock {
 	display: block;
 	content: '';
@@ -98,6 +157,16 @@
 	width: 0;
 }
 
+// Replaces element with section of @img. Background url is determined by set @img_path + @img.
+// For example. @img_path: "/img" and @img: "sprite.png", results in "/img/sprite.png"
+//
+// @w 		- section width
+// @h 		- section height
+// @img 	- filename to use as background image
+// @x		- horizontal background-position
+// @y 		- vertical background-position
+//
+// Compatibility untested
 .imgBlock (@w, @h, @img, @x: 0, @y: 0) {
 	background: url('@{img_path}/@{img}') @x @y no-repeat transparent;
 	display: block;
@@ -108,18 +177,33 @@
 	width: @w;
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/opacity
+//
+// @alpha - alpha channel opacity
+//
+// Compatibility untested
 .opacity (@alpha) {
 	-moz-opacity: @alpha;
 	filter: alpha(opacity=@alpha);
 	opacity: @alpha;
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/perspective
+//
+// @val - number representing length away from the user's z=0 plane.
+//
+// Compatibility untested
 .perspective (@val) {
 	-moz-perspective: @val;
 	-webkit-perspective: @val;
 	perspective: @val;
 }
 
+// Clips element's text at one single line
+//
+// @type - value for text-overflow, defaults to 'ellipsis'
+//
+// Compatibility untested
 .textOverflow (@type: ellipsis) {
 	display: block;
 	overflow: hidden;
@@ -127,6 +211,13 @@
 	white-space: nowrap;
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/transition
+//
+// @property 	- name of properties to which transition will be applied
+// @dur			- transition's duration in seconds
+// @timing		- timing function to be used for transition
+//
+// Compatibility untested
 .transition (@property, @dur, @timing) {
 	-webkit-transition-property: @property;
 	-webkit-transition-duration: @dur;
@@ -142,18 +233,33 @@
 	transition-timing-function: @timing;
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/transform
+//
+// @func - CSS transform function
+//
+// Compatibility untested
 .transform (@func) {
 	-moz-transform: @func;
 	-webkit-transform: @func;
 	transform: @func;
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/transform-origin
+//
+// @origin - origin offset
+//
+// Compatibility untested
 .transformOrigin (@origin) {
 	-moz-transform-origin: @origin;
 	-webkit-transform-origin: @origin;
 	transform-origin: @origin;
 }
 
+// https://developer.mozilla.org/en-US/docs/CSS/transform-style
+//
+// @style - `flat` or `preserve-3d`
+//
+// Compatibility unstested
 .transformStyle (@style) {
 	-moz-transform-style: @style;
 	-webkit-transform-style: @style;
