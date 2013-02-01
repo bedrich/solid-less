@@ -43,7 +43,7 @@
 // @type - `visible` or `hidden`
 //
 // Compatibility untested
-.backfaceVisibility (@type) {
+.backface-visibility (@type) {
 	-moz-backface-visibility: @type;
 	-webkit-backface-visibility: @type;
 	backface-visibility: @type;
@@ -102,7 +102,7 @@
 // @val - content-box, padding-box, or border-box
 //
 // Compatibility untested
-.boxSizing (@val) {
+.box-sizing (@val) {
 	-moz-box-sizing: @val;
 	-webkit-box-sizing: @val;
 	box-sizing: @val;
@@ -110,6 +110,7 @@
 
 // https://developer.mozilla.org/en-US/docs/CSS/box-shadow
 //
+// @first	- [optional] 'inset'
 // @x 		- horizontal offset
 // @y 		- vertical offset
 // @blur 	- shadow's blur
@@ -117,31 +118,22 @@
 // @color 	- shadow's color
 //
 // Compatibility untested
-.boxShadow (@x, @y, @blur, @spread, @color) {
-	-moz-box-shadow: @x @y @blur @spread @color;
-	-webkit-box-shadow: @x @y @blur @spread @color;
-	box-shadow: @x @y @blur @spread @color;
+.box-shadow (@first, @rest...) when (@first = inset) {
+	-moz-box-shadow: inset @rest;
+	-webkit-box-shadow: inset @rest;
+	box-shadow: inset @rest;
 }
 
-// .boxShadow alternative, applies shadow inside the element
-//
-// @x 		- horizontal offset
-// @y 		- vertical offset
-// @blur 	- shadow's blur
-// @spread	- shadow's spread
-// @color 	- shadow's color
-//
-// Compatibility untested
-.boxShadowInset (@x, @y, @blur, @spread, @color) {
-	-moz-box-shadow: inset @x @y @blur @spread @color;
-	-webkit-box-shadow: inset @x @y @blur @spread @color;
-	box-shadow: inset @x @y @blur @spread @color;
+.box-shadow (@first, @rest...) when not (@first = inset) {
+	-moz-box-shadow: @arguments;
+	-webkit-box-shadow: @arguments;
+	box-shadow: @arguments;
 }
 
 // Resets box shadow to its default state, that is, as if it was never applied
 //
 // Compatibility untested
-.boxShadowRemove {
+.box-shadow-remove {
 	-moz-box-shadow: 0 0 0 0 transparent;
 	-webkit-box-shadow: 0 0 0 0 transparent;
 	box-shadow: 0 0 0 0 transparent;
@@ -150,7 +142,7 @@
 // Styles element as though it was empty
 //
 // Compatibility untested
-.emptyBlock {
+.empty-block {
 	display: block;
 	content: '';
 	height: 0;
@@ -167,7 +159,7 @@
 // @y 		- vertical background-position
 //
 // Compatibility untested
-.imgBlock (@w, @h, @img, @x: 0, @y: 0) {
+.img-block (@w, @h, @img, @x: 0, @y: 0) {
 	background: url('@{img_path}/@{img}') @x @y no-repeat transparent;
 	display: block;
 	height: @h;
@@ -204,7 +196,7 @@
 // @type - value for text-overflow, defaults to 'ellipsis'
 //
 // Compatibility untested
-.textOverflow (@type: ellipsis) {
+.text-overflow (@type: ellipsis) {
 	display: block;
 	overflow: hidden;
 	text-overflow: @type;
@@ -249,7 +241,7 @@
 // @origin - origin offset
 //
 // Compatibility untested
-.transformOrigin (@origin) {
+.transform-origin (@origin) {
 	-moz-transform-origin: @origin;
 	-webkit-transform-origin: @origin;
 	transform-origin: @origin;
@@ -260,7 +252,7 @@
 // @style - `flat` or `preserve-3d`
 //
 // Compatibility unstested
-.transformStyle (@style) {
+.transform-style (@style) {
 	-moz-transform-style: @style;
 	-webkit-transform-style: @style;
 	transform-style: @style;
