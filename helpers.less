@@ -110,24 +110,13 @@
 
 // https://developer.mozilla.org/en-US/docs/CSS/box-shadow
 //
-// @first	- [optional] 'inset'
-// @x 		- horizontal offset
-// @y 		- vertical offset
-// @blur 	- shadow's blur
-// @spread	- shadow's spread
-// @color 	- shadow's color
+// @properties - box shadow properties
 //
 // Compatibility untested
-.box-shadow (@first, @rest...) when (@first = inset) {
-	-moz-box-shadow: inset @rest;
-	-webkit-box-shadow: inset @rest;
-	box-shadow: inset @rest;
-}
-
-.box-shadow (@first, @rest...) when not (@first = inset) {
-	-moz-box-shadow: @arguments;
-	-webkit-box-shadow: @arguments;
-	box-shadow: @arguments;
+.box-shadow (@properties) {
+	-moz-box-shadow: @properties;
+	-webkit-box-shadow: @properties;
+	box-shadow: @properties;
 }
 
 // Resets box shadow to its default state, that is, as if it was never applied
